@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<otrs_package version="1.0">
+    <!-- GENERATED WITH OTRS::OPM::Maker::Command::sopm (1.36) -->
+    <Name>ToolbarTicketOwner</Name>
+    <Version>5.0.1</Version>
+    <Framework>5.0.x</Framework>
+    <Vendor>Perl-Services.de</Vendor>
+    <URL>http://www.perl-services.de</URL>
+    <Description Lang="de">Neues Toolbar-Module für eine Ticketübersicht, bei denen der Agent Ticketbesitzer ist</Description>
+    <Description Lang="en">New toolbar module to link ticket overview where the agent is the ticket owner</Description>
+    <License>GNU AFFERO GENERAL PUBLIC LICENSE Version 3, November 2007</License>
+    <Filelist>
+        <File Permission="644" Location="Kernel/Config/Files/ToolbarTicketOwner.xml" />
+        <File Permission="644" Location="Kernel/Modules/AgentTicketOwnerView.pm" />
+        <File Permission="644" Location="Kernel/Output/HTML/ToolBar/TicketOwner.pm" />
+        <File Permission="644" Location="doc/ToolbarTicketOwner.json" />
+    </Filelist>
+</otrs_package>

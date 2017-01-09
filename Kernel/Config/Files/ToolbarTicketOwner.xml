@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<otrs_config version="1.0" init="Config">
+    <ConfigItem Name="Frontend::ToolBarModule###7-Ticket::TicketOwner" Required="0" Valid="1">
+        <Description Translatable="1">Agent interface notification module to see the number of tickets an agent owns. Additional access control to show or not show this link can be done by using Key "Group" and Content like "rw:group1;move_into:group2".</Description>
+        <Group>Ticket</Group>
+        <SubGroup>Frontend::Agent::ToolBarModule</SubGroup>
+        <Setting>
+            <Hash>
+                <Item Key="Module">Kernel::Output::HTML::ToolBar::TicketOwner</Item>
+                <Item Key="CssClass">Owner</Item>
+                <Item Key="CssClassNew">Owner New</Item>
+                <Item Key="CssClassReached">Owner Reached</Item>
+                <Item Key="Icon">fa fa-user</Item>
+                <Item Key="IconNew">fa fa-user</Item>
+                <Item Key="IconReached">fa fa-user</Item>
+                <Item Key="AccessKey">r</Item>
+                <Item Key="AccessKeyNew"></Item>
+                <Item Key="AccessKeyReached"></Item>
+                <Item Key="Priority">1030011</Item>
+            </Hash>
+        </Setting>
+    </ConfigItem>
+    <ConfigItem Name="Ticket::Frontend::AgentTicketOwnerView###SortBy::Default" Required="1" Valid="1">
+        <Description Translatable="1">Defines the default ticket attribute for ticket sorting in the responsible view of the agent interface.</Description>
+        <Group>Ticket</Group>
+        <SubGroup>Frontend::Agent::Ticket::ViewOwner</SubGroup>
+        <Setting>
+            <Option SelectedID="Age">
+                <Item Key="Age" Translatable="1">Age</Item>
+                <Item Key="TicketNumber" Translatable="1">TicketNumber</Item>
+                <Item Key="Title" Translatable="1">Title</Item>
+                <Item Key="Queue" Translatable="1">Queue</Item>
+                <Item Key="Priority" Translatable="1">Priority</Item>
+                <Item Key="EscalationTime" Translatable="1">EscalationTime</Item>
+            </Option>
+        </Setting>
+    </ConfigItem>
+    <ConfigItem Name="Ticket::Frontend::AgentTicketOwnerView###Order::Default" Required="1" Valid="1">
+        <Description Translatable="1">Defines the default ticket order in the responsible view of the agent interface. Up: oldest on top. Down: latest on top.</Description>
+        <Group>Ticket</Group>
+        <SubGroup>Frontend::Agent::Ticket::ViewOwner</SubGroup>
+        <Setting>
+            <Option SelectedID="Up">
+                <Item Key="Down" Translatable="1">Down</Item>
+                <Item Key="Up" Translatable="1">Up</Item>
+            </Option>
+        </Setting>
+    </ConfigItem>
+    <ConfigItem Name="Frontend::Module###AgentTicketOwnerView" Required="0" Valid="1">
+        <Description Translatable="1">Frontend module registration for the agent interface.</Description>
+        <Group>Ticket</Group>
+        <SubGroup>Frontend::Agent::ModuleRegistration</SubGroup>
+        <Setting>
+            <FrontendModuleReg>
+                <Description Translatable="1">Owner Tickets.</Description>
+                <Title Translatable="1">Owner Tickets</Title>
+                <NavBarName>Ticket</NavBarName>
+                <Loader>
+                    <CSS>Core.AllocationList.css</CSS>
+                    <JavaScript>Core.UI.AllocationList.js</JavaScript>
+                    <JavaScript>Core.Agent.TableFilters.js</JavaScript>
+                </Loader>
+            </FrontendModuleReg>
+        </Setting>
+    </ConfigItem>
+
+</otrs_config>

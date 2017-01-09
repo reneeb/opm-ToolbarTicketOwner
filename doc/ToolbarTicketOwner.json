@@ -1,0 +1,16 @@
+{
+    "name": "ToolbarTicketOwner",
+    "version": "5.0.1",
+    "framework": [
+        "5.0.x"
+    ],
+    "vendor": {
+        "name":  "Perl-Services.de",
+        "url": "http://www.perl-services.de"
+    },
+    "license": "GNU AFFERO GENERAL PUBLIC LICENSE Version 3, November 2007",
+    "description" : {
+        "en": "New toolbar module to link ticket overview where the agent is the ticket owner",
+        "de": "Neues Toolbar-Module für eine Ticketübersicht, bei denen der Agent Ticketbesitzer ist"
+    }
+}
