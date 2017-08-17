@@ -79,18 +79,29 @@ sub Run {
         Permission                    => 'ro',
     );
 
-    my $Class        = $Param{Config}->{CssClass};
-    my $ClassNew     = $Param{Config}->{CssClassNew};
-    my $ClassReached = $Param{Config}->{CssClassReached};
+    my $CountAvailable = $TicketObject->TicketSearch(
+        Result     => 'COUNT',
+        StateType  => 'Open',
+        Locks      => ['unlock'],
+        OwnerIDs   => [ $Self->{UserID} ],
+        UserID     => 1,
+        Permission => 'ro',
+    );
 
-    my $Icon        = $Param{Config}->{Icon};
-    my $IconNew     = $Param{Config}->{IconNew};
-    my $IconReached = $Param{Config}->{IconReached};
+    my $Class          = $Param{Config}->{CssClass};
+    my $ClassNew       = $Param{Config}->{CssClassNew};
+    my $ClassReached   = $Param{Config}->{CssClassReached};
+    my $ClassAvailable = $Param{Config}->{CssAvailable};
+
+    my $Icon          = $Param{Config}->{Icon};
+    my $IconNew       = $Param{Config}->{IconNew};
+    my $IconReached   = $Param{Config}->{IconReached};
+    my $IconAvailable = $Param{Config}->{IconAvailable};
 
     my $URL = $Kernel::OM->Get('Kernel::Output::HTML::Layout')->{Baselink};
     my %Return;
     my $Priority = $Param{Config}->{Priority};
-    if ($CountNew) {
+    if ($CountNew && $IconNew ) {
         $Return{ $Priority++ } = {
             Block       => 'ToolBarItem',
             Description => Translatable('Owner Tickets New'),
@@ -101,7 +112,7 @@ sub Run {
             AccessKey   => $Param{Config}->{AccessKeyNew} || '',
         };
     }
-    if ($CountReached) {
+    if ($CountReached && $IconReached ) {
         $Return{ $Priority++ } = {
             Block       => 'ToolBarItem',
             Description => Translatable('Owner Tickets Reminder Reached'),
@@ -112,7 +123,18 @@ sub Run {
             AccessKey   => $Param{Config}->{AccessKeyReached} || '',
         };
     }
-    if ($Count) {
+    if ($CountAvailable && $IconAvailable ) {
+        $Return{ $Priority++ } = {
+            Block       => 'ToolBarItem',
+            Description => Translatable('Owner Tickets Available'),
+            Count       => $CountAvailable,
+            Class       => $ClassAvailable,
+            Icon        => $IconAvailable,
+            Link        => $URL . 'Action=AgentTicketOwnerView;Filter=Available',
+            AccessKey   => $Param{Config}->{AccessKeyAvailable} || '',
+        };
+    }
+    if ($Count && $Icon) {
         $Return{ $Priority++ } = {
             Block       => 'ToolBarItem',
             Description => Translatable('Owner Tickets Total'),

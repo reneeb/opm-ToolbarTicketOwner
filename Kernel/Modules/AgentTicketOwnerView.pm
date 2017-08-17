@@ -220,6 +220,19 @@ sub Run {
                 Permission                    => 'ro',
             },
         },
+        Available => {
+            Name   => Translatable('Unlocked'),
+            Prio   => 1004,
+            Search => {
+                StateType   => 'Open',
+                Locks       => [ 'unlock' ],
+                OwnerIDs    => [ $Self->{UserID} ],
+                OrderBy     => $OrderBy,
+                SortBy      => $SortByS,
+                UserID      => 1,
+                Permission  => 'ro',
+            },
+        },
     );
 
     my $Filter = $ParamObject->GetParam( Param => 'Filter' ) || 'All';

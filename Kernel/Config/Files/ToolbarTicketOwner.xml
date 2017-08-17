@@ -10,9 +10,11 @@
                 <Item Key="CssClass">Owner</Item>
                 <Item Key="CssClassNew">Owner New</Item>
                 <Item Key="CssClassReached">Owner Reached</Item>
+                <Item Key="CssClassAvailable">Owner Available</Item>
                 <Item Key="Icon">fa fa-user</Item>
                 <Item Key="IconNew">fa fa-user</Item>
                 <Item Key="IconReached">fa fa-user</Item>
+                <Item Key="IconAvailable">fa fa-check-square-o</Item>
                 <Item Key="AccessKey">r</Item>
                 <Item Key="AccessKeyNew"></Item>
                 <Item Key="AccessKeyReached"></Item>
